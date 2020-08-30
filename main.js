@@ -59,13 +59,39 @@ class Blockchain{
     return true;
   }
 }
+var a = true;
+var count = 1;
 
 let JoeCoin = new Blockchain;
+
+const prompt = require('prompt-sync')();
+
+while(a == true){
+  var command = prompt("Would you like to add a block? (y/n) ");
+
+  if (command == "y"){
+    var content = prompt("How many transactions would you like to display? ");
+    JoeCoin.addBlock(new Block(count, '30/08/2020', {transactions: content}));
+    count++;
+  }
+
+  var secondCommand = prompt("Would you like to print out blocks? (y/n) ");
+
+  if (secondCommand == "y"){
+    console.log(JSON.stringify(JoeCoin, null, 5));
+  }
+  var cancel = prompt("Cancel? (y/n) ")
+  if (cancel == "y"){
+    a = false;
+  }
+}
+
+//let JoeCoin = new Blockchain;
 //console.log('Block 1 being mined......');
-JoeCoin.addBlock(new Block(1, '30/08/2020', {transactions: 5}));
+//JoeCoin.addBlock(new Block(1, '30/08/2020', {transactions: 5}));
 
 //console.log('Block 2 being mined......');
-JoeCoin.addBlock(new Block(2, '31/08/2020', {transactions: 7}));
+//JoeCoin.addBlock(new Block(2, '31/08/2020', {transactions: 7}));
 
 
 //console.log('Is Blockchain Valid? ' + JoeCoin.isChainValid());
@@ -73,4 +99,4 @@ JoeCoin.addBlock(new Block(2, '31/08/2020', {transactions: 7}));
 //JoeCoin.chain[1].data = {transactions: 50};
 
 //console.log('Is Blockchain Valid? ' + JoeCoin.isChainValid());
-console.log(JSON.stringify(JoeCoin, null, 5));
+//console.log(JSON.stringify(JoeCoin, null, 5));
